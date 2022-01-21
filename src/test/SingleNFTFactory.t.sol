@@ -32,19 +32,6 @@ contract ExampleCloneFactoryTest is DSTest {
         bytes32 uri2,
         bytes32 uri3
     ) public {
-        // bytes32 name;
-        // bytes32 symbol;
-        // bytes32 uri1;
-        // bytes32 uri2;
-        // bytes32 uri3;
-        // assembly {
-        //     name := mload(add(_name, 0x20))
-        //     symbol := mload(add(_symbol, 0x20))
-        //     uri1 := mload(add(_URI, 0x20))
-        //     uri2 := mload(add(_URI, 0x40))
-        //     uri3 := mload(add(_URI, 0x60))
-        // }
-
         factory.createERC721(name, symbol, uri1, uri2, uri3);
     }
 
