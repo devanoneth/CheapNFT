@@ -53,7 +53,9 @@ contract SingleNFTFactory {
             mstore(add(ptr, 0x100), _URI3)
         }
 
-        erc721 = SingleNFT(address(implementation).cloneWithCallDataProvision(ptr));
+        erc721 = SingleNFT(
+            address(implementation).cloneWithCallDataProvision(ptr)
+        );
         erc721.mint(msg.sender);
     }
 }

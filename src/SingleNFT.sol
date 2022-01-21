@@ -8,8 +8,12 @@ contract SingleNFT {
 
     mapping(uint256 => address) public ownerOf;
 
-    event Transfer(address indexed from, address indexed to, uint256 indexed id);
-  
+    event Transfer(
+        address indexed from,
+        address indexed to,
+        uint256 indexed id
+    );
+
     function name() external pure returns (string memory) {
         uint256 offset = _getImmutableArgsOffset();
         bytes32 nameBytes;

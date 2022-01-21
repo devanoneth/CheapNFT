@@ -9,12 +9,15 @@ import {SingleNFT} from "../SingleNFT.sol";
 import {SingleNFTFactory} from "../SingleNFTFactory.sol";
 
 contract ExampleCloneFactoryTest is DSTest {
-
     VM internal constant vm = VM(HEVM_ADDRESS);
 
     SingleNFTFactory internal factory;
 
-    event Transfer(address indexed from, address indexed to, uint256 indexed id);
+    event Transfer(
+        address indexed from,
+        address indexed to,
+        uint256 indexed id
+    );
 
     function setUp() public {
         SingleNFT implementation = new SingleNFT();
@@ -42,7 +45,8 @@ contract ExampleCloneFactoryTest is DSTest {
     function testCreation() public {
         string memory _name = "A cool name";
         string memory _symbol = "SYMBOL";
-        string memory _URI = "ipfs://QmWEgPgwqX9jruTaYF9nLeJjcUoiD5DVLLibWekgQgknEX";
+        string
+            memory _URI = "ipfs://QmWEgPgwqX9jruTaYF9nLeJjcUoiD5DVLLibWekgQgknEX";
 
         bytes32 name;
         bytes32 symbol;
@@ -68,13 +72,14 @@ contract ExampleCloneFactoryTest is DSTest {
 
         assertEq(clone.name(), string(abi.encodePacked(name)));
         assertEq(clone.symbol(), string(abi.encodePacked(symbol)));
-        assertEq(clone.tokenURI(0),string(abi.encodePacked(uri1, uri2, uri3)));
+        assertEq(clone.tokenURI(0), string(abi.encodePacked(uri1, uri2, uri3)));
     }
 
     function testCannotCallMintAgain() public {
         string memory _name = "A cool name";
         string memory _symbol = "SYMBOL";
-        string memory _URI = "ipfs://QmWEgPgwqX9jruTaYF9nLeJjcUoiD5DVLLibWekgQgknEX";
+        string
+            memory _URI = "ipfs://QmWEgPgwqX9jruTaYF9nLeJjcUoiD5DVLLibWekgQgknEX";
 
         bytes32 name;
         bytes32 symbol;
