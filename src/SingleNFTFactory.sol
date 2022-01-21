@@ -31,10 +31,10 @@ contract SingleNFTFactory {
     /// @notice Creates a SingleNFT contract
     /// @dev Uses a modified minimal proxy contract that stores immutable parameters in code and
     /// passes them in through calldata. See ClonesWithCallData. Make 96 byte token URI
-    /// @param _name The name of the ERC721 token
-    /// @param _symbol The symbol of the ERC721 token
-    /// @param _URI1 First part of the URI, requires client to split up URI for gas savings
-    /// @param _URI2 Second part of the URI, requires client to split up URI for gas savings
+    /// @param _name The name of the ERC721 token (restricted to 32 bytes)
+    /// @param _symbol The symbol of the ERC721 token (restricted to 16 bytes)
+    /// @param _URI1 First part of the IPFS hash, requires client to split up URI for gas savings
+    /// @param _URI2 Second part of the IPFS hash, requires client to split up URI for gas savings
     /// @return erc721 The created SingleNFT contract
     function createERC721(
         bytes32 _name,
@@ -53,6 +53,7 @@ contract SingleNFTFactory {
         erc721 = SingleNFT(
             address(implementation).cloneWithCallDataProvision(ptr)
         );
-        erc721.mint(msg.sender);
+        // Random function name to save gas, see comments in function for explanation
+        erc721.addOwner_Ra1K(msg.sender);
     }
 }

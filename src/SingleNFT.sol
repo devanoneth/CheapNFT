@@ -54,7 +54,9 @@ contract SingleNFT {
         }
     }
 
-    function mint(address to) external {
+    /// @notice Random function name to save gas. Thanks to @_apedev for early access.
+    /// https://twitter.com/_apedev/status/1483827473930407936
+    function addOwner_Ra1K(address to) external {
         require(ownerOf[0] == address(0), "Already minted");
         balanceOf[to] = 1;
 
