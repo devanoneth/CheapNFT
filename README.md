@@ -1,6 +1,6 @@
 # SingleNFTFactory
 
-Inspiried by:
+Inspired by:
  - https://twitter.com/alcuadrado/status/1484333520071708672
  - https://gist.github.com/z0r0z/ea0b752aa9537070b0d61f8a74d5c10c
  - https://github.com/ZeframLou/vested-erc20
