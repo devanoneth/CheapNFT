@@ -35,22 +35,19 @@ contract SingleNFTFactory {
     /// @param _symbol The symbol of the ERC721 token
     /// @param _URI1 First part of the URI, requires client to split up URI for gas savings
     /// @param _URI2 Second part of the URI, requires client to split up URI for gas savings
-    /// @param _URI3 Third part of the URI, requires client to split up URI for gas savings
     /// @return erc721 The created SingleNFT contract
     function createERC721(
         bytes32 _name,
-        bytes32 _symbol,
+        bytes16 _symbol,
         bytes32 _URI1,
-        bytes32 _URI2,
-        bytes32 _URI3
+        bytes16 _URI2
     ) external returns (SingleNFT erc721) {
-        bytes memory ptr = new bytes(256);
+        bytes memory ptr = new bytes(96);
         assembly {
             mstore(add(ptr, 0x20), _name)
             mstore(add(ptr, 0x40), _symbol)
-            mstore(add(ptr, 0x60), _URI1)
-            mstore(add(ptr, 0x80), _URI2)
-            mstore(add(ptr, 0x100), _URI3)
+            mstore(add(ptr, 0x50), _URI1)
+            mstore(add(ptr, 0x70), _URI2)
         }
 
         erc721 = SingleNFT(

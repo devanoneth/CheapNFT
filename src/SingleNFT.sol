@@ -25,7 +25,7 @@ contract SingleNFT {
 
     function symbol() external pure returns (string memory) {
         uint256 offset = _getImmutableArgsOffset();
-        bytes32 symbolBytes;
+        bytes16 symbolBytes;
         assembly {
             symbolBytes := calldataload(add(offset, 0x20))
         }
@@ -35,14 +35,12 @@ contract SingleNFT {
     function tokenURI(uint256) external pure returns (string memory) {
         uint256 offset = _getImmutableArgsOffset();
         bytes32 uriBytes1;
-        bytes32 uriBytes2;
-        bytes32 uriBytes3;
+        bytes16 uriBytes2;
         assembly {
-            uriBytes1 := calldataload(add(offset, 0x40))
-            uriBytes2 := calldataload(add(offset, 0x60))
-            uriBytes3 := calldataload(add(offset, 0x80))
+            uriBytes1 := calldataload(add(offset, 0x30))
+            uriBytes2 := calldataload(add(offset, 0x50))
         }
-        return string(abi.encodePacked(uriBytes1, uriBytes2, uriBytes3));
+        return string(abi.encodePacked("ipfs://", uriBytes1, uriBytes2));
     }
 
     /// @return offset The offset of the packed immutable args in calldata
