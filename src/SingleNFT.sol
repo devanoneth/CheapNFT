@@ -9,8 +9,6 @@ contract SingleNFT {
     mapping(uint256 => address) public ownerOf;
 
     event Transfer(address indexed from, address indexed to, uint256 indexed id);
-
-    bool setup = false;
   
     function name() external pure returns (string memory) {
         uint256 offset = _getImmutableArgsOffset();
@@ -55,12 +53,11 @@ contract SingleNFT {
     }
 
     function mint(address to) external {
-        require(!setup);
+        require(ownerOf[0] == address(0), "Already minted");
         balanceOf[to] = 1;
 
         ownerOf[0] = to;
 
         emit Transfer(address(0), to, 0);
-        setup = true;
     }
 }
