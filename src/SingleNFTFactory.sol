@@ -54,6 +54,6 @@ contract SingleNFTFactory {
             address(implementation).cloneWithCallDataProvision(ptr)
         );
         // Random function name to save gas, see comments in function for explanation
-        erc721.addOwner_Ra1K(msg.sender);
+        erc721.mint_d22vi9okr4w(msg.sender);
     }
 }

@@ -56,12 +56,24 @@ contract SingleNFT {
 
     /// @notice Random function name to save gas. Thanks to @_apedev for early access.
     /// https://twitter.com/_apedev/status/1483827473930407936
-    function addOwner_Ra1K(address to) external {
+    function mint_d22vi9okr4w(address to) external {
         require(ownerOf[0] == address(0), "Already minted");
         balanceOf[to] = 1;
 
         ownerOf[0] = to;
 
         emit Transfer(address(0), to, 0);
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        pure
+        virtual
+        returns (bool)
+    {
+        return
+            interfaceId == 0x01ffc9a7 ||
+            interfaceId == 0x80ac58cd ||
+            interfaceId == 0x5b5e139f;
     }
 }

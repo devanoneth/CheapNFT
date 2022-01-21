@@ -95,6 +95,6 @@ contract ExampleCloneFactoryTest is DSTest {
         SingleNFT clone = factory.createERC721(name, symbol, uri1, uri2);
 
         vm.expectRevert("Already minted");
-        clone.addOwner_Ra1K(address(0));
+        clone.mint_d22vi9okr4w(address(0));
     }
 }

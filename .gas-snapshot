@@ -1,0 +1,3 @@
+testCannotCallMintAgain() (gas: 119072)
+testCreation() (gas: 135673)
+testGasOfCloning(bytes32,bytes16,bytes32,bytes16) (runs: 256, μ: 112651, ~: 112653)
