@@ -1,18 +1,12 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity >=0.8.0;
 
-import {console} from "./test/utils/console.sol";
-
 /// @notice 1-of-1 NFT.
 /// adapted from https://gist.github.com/z0r0z/ea0b752aa9537070b0d61f8a74d5c10c
 contract SingleNFT {
     address private owner;
 
     event Transfer(address indexed from, address indexed to, uint256 indexed id);
-
-    event Approval(address indexed owner, address indexed spender, uint256 indexed id);
-
-    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
 
     function balanceOf(address) external pure returns (uint256) {
         return 1;
@@ -28,13 +22,13 @@ contract SingleNFT {
         bytes memory output;
         for (uint256 i = input.length; i > 0; i--) {
             // Find the first non null byte
-            if (uint8(input[i-1]) != 0) {
+            if (uint8(input[i - 1]) != 0) {
                 // Initialize the output byte array
                 if (output.length == 0) {
                     output = new bytes(i);
                 }
 
-                output[i-1] = input[i-1];
+                output[i - 1] = input[i - 1];
             }
         }
 
@@ -91,31 +85,4 @@ contract SingleNFT {
     function supportsInterface(bytes4 interfaceId) external pure returns (bool) {
         return interfaceId == 0x01ffc9a7 || interfaceId == 0x80ac58cd || interfaceId == 0x5b5e139f;
     }
-
-    function getApproved(uint256) public view {}
-
-    function isApprovedForAll(address, address) public view {}
-
-    function approve(address, uint256) external {}
-
-    function setApprovalForAll(address operator, bool approved) external {}
-
-    function transferFrom(
-        address from,
-        address to,
-        uint256 id
-    ) external {}
-
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 id
-    ) external {}
-
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 id,
-        bytes memory data
-    ) external {}
 }
