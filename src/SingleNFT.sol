@@ -4,15 +4,21 @@ pragma solidity >=0.8.0;
 /// @notice 1-of-1 NFT.
 /// adapted from https://gist.github.com/z0r0z/ea0b752aa9537070b0d61f8a74d5c10c
 contract SingleNFT {
-    mapping(address => uint256) public balanceOf;
-
-    mapping(uint256 => address) public ownerOf;
+    address private owner;
 
     event Transfer(
         address indexed from,
         address indexed to,
         uint256 indexed id
     );
+
+    function balanceOf(address) external pure returns (uint256) {
+        return 1;
+    }
+
+    function ownerOf(uint256) external view returns (address) {
+        return owner;
+    }
 
     function name() external pure returns (string memory) {
         uint256 offset = _getImmutableArgsOffset();
@@ -57,10 +63,8 @@ contract SingleNFT {
     /// @notice Random function name to save gas. Thanks to @_apedev for early access.
     /// https://twitter.com/_apedev/status/1483827473930407936
     function mint_d22vi9okr4w(address to) external {
-        require(ownerOf[0] == address(0), "Already minted");
-        balanceOf[to] = 1;
-
-        ownerOf[0] = to;
+        require(owner == address(0), "Already minted");
+        owner = to;
 
         emit Transfer(address(0), to, 0);
     }
