@@ -67,9 +67,9 @@ contract ExampleCloneFactoryTest is DSTest {
         console.log(clone.symbol());
         console.log(clone.tokenURI(0));
 
-        assertEq(clone.name(), string(abi.encodePacked(name)));
-        assertEq(clone.symbol(), string(abi.encodePacked(symbol)));
-        assertEq(clone.tokenURI(0), string(abi.encodePacked("ipfs://", uri1, uri2)));
+        assertEq(clone.name(), _name);
+        assertEq(clone.symbol(), _symbol);
+        assertEq(clone.tokenURI(0), string(abi.encodePacked("ipfs://", _URI)));
     }
 
     function testCannotCallMintAgain() public {
